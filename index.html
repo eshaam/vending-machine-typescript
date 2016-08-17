@@ -9,8 +9,19 @@
 <body>
     <div class="container">
         <h1>Vending Machine Simulation</h1>
-        <div class="col-md-8">
-
+        <div class="col-md-8 machine" data-bind="foreach: cells">
+            <div class="col-md-4 cell">
+                <div class="col-md-6 image">
+                    <img class="img-responsive" data-bind="attr: { src: product.category.getImageUrl(), 
+                    alt: product.category.name
+                    }">
+                </div>
+                <div class="col-md-6 productInfo">
+                    <div data-bind="text: product.name"></div>
+                    <h4 data-bind="text: stock"></h4>
+                    <h3 data-bind="text: '$ ' + product.price"></h3>
+                </div>
+            </div>
         </div>
         <div class="col-md-4">
             <h4>
