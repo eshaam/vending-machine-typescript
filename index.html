@@ -10,7 +10,9 @@
     <div class="container">
         <h1>Vending Machine Simulation</h1>
         <div class="col-md-8 machine" data-bind="foreach: cells">
-            <div class="col-md-4 cell">
+            <div class="col-md-4 cell" data-bind="click: $parent.select,
+            css:  {selected: $parent.selectedCell().product == $data.product, sold: sold}
+            ">
                 <div class="col-md-6 image">
                     <img class="img-responsive" data-bind="attr: { src: product.category.getImageUrl(), 
                     alt: product.category.name
@@ -24,7 +26,7 @@
             </div>
         </div>
         <div class="col-md-4">
-            <h4>
+                <h4>
                 Paid: $
                 <span id="total" data-bind="text: paid"></span>
                 <br><br>
@@ -33,13 +35,25 @@
                 >
                     Insert Quarter
                 </button>-->
-
+                </h4>
                 <div data-bind="foreach: acceptedCoins">
                     <img data-bind="attr: { src: getImageUrl(), 
                     alt: value
                     }, click: $parent.acceptCoin" />
                 </div>
-            </h4>
+             <h3 data-bind="with: selectedCell">
+                 <div data-bind="text: product.name">
+                     <div>
+                         $
+                         <span data-bind="text: product.price"></span>
+                     </div>
+                 </div>
+             </h3>
+             <button class="btn btn-primary payButton"
+             data-bind="enable: canPay, click: pay"
+             >
+             Pay
+             </button>
         </div>
     </div>
     <script src="js/lib/knockout-3.4.0.js"></script>
