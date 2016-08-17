@@ -1,4 +1,14 @@
-/// <reference path="coin.ts" />
+/// <reference path="./coin.ts" />
+/// <reference path="./product.ts" />
+
+
+class Cell {
+    constructor(public product: CocaCola) {
+
+    }
+    stock = ko.observable(3)
+    sold = ko.observable(false)
+}
 
 class VendingMachine {
     //people will put coins into a machine so we will have to keep track of a total
