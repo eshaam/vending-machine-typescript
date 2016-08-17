@@ -2,3 +2,4 @@
 
 
 var machine = new VendingMachine();
+ko.applyBindings(machine)
